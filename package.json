@@ -1,6 +1,6 @@
 {
   "name": "vue-drop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,7 +12,7 @@
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
   },
-  "main": "./dist/js/index.js",
+  "main": "./dist/vue-drop.js",
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",

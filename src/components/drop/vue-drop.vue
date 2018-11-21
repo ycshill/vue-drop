@@ -8,7 +8,7 @@
 import Sortable from 'sortablejs';
 
 export default {
-  name: 'VueDrag',
+  name: 'VueDrop',
   data() {
     return {};
   },
@@ -252,57 +252,57 @@ export default {
       scroll: this.scroll,
       // Defines function that will be used for autoscrolling
       // 定义
-      scrollFn: (offsetX, offsetY, originalEvent, touchEvt, hoverTargetEl) => {
+      scrollFn: this.scrollFn ? (offsetX, offsetY, originalEvent, touchEvt, hoverTargetEl) => {
         this.scrollFn(offsetX, offsetY, originalEvent, touchEvt, hoverTargetEl);
-      },
+      } : null,
       // px, how near the mouse must be to an edge to start scrolling.
       // px, 距离多远开始可以滚动
       scrollSensitivity: this.scrollSensitivity,
       // The speed at which the window should scroll once
       // the mouse pointer gets within the scrollSensitivity distance.
       scrollSpeed: this.scrollSpeed,
-      setData: (dataTransfer, dragEl) => {
+      setData: this.setData ? (dataTransfer, dragEl) => {
         this.setData(dataTransfer, dragEl);
-      },
+      } : null,
       // Element is chosen
-      onChoose: (evt) => {
+      onChoose: this.onChoose ? (evt) => {
         this.onChoose(evt);
-      },
+      } : null,
       // Element dragging started
-      onStart: (evt) => {
+      onStart: this.onStart ? (evt) => {
         this.onStart(evt);
-      },
+      } : null,
       // Element dragging ended
-      onEnd: (evt) => {
+      onEnd: this.onEnd ? (evt) => {
         this.onEnd(evt);
-      },
+      } : null,
       // Element is dropped into the list from another list
-      onAdd: (evt) => {
+      onAdd: this.onAdd ? (evt) => {
         this.onAdd(evt);
-      },
+      } : null,
       // Changed sorting within list
-      onUpdate: (evt) => {
+      onUpdate: this.onUpdate ? (evt) => {
         this.onUpdate(evt);
-      },
+      } : null,
       // Called by any change to the list (add / update / remove)
-      onSort: (evt) => {
+      onSort: this.onSort ? (evt) => {
         this.onSort(evt);
-      },
+      } : null,
       // Element is removed from the list into another list
-      onRemove: (evt) => {
+      onRemove: this.onRemove ? (evt) => {
         this.onRemove(evt);
-      },
+      } : null,
       // Attempt to drag a filtered element
-      onFilter: evt => {
+      onFilter: this.onFilter ? evt => {
         this.onFilter(evt);
-      },
+      } : null,
       // Event when you move an item in the list or between lists
-      onMove: (evt, originalEvent) => {
+      onMove: this.onMove ? (evt, originalEvent) => {
         this.onMove(evt, originalEvent);
-      },
-      onClone: (evt) => {
+      } : null,
+      onClone: this.onClone ? (evt) => {
         this.onClone(evt);
-      },
+      } : null,
     });
     window.console.log(this.sortable);
   },

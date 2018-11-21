@@ -1,3 +1,78 @@
+{ parent: 
+   Rule {
+     parent: 
+      { parent: [Object],
+        store: [Object],
+        rules: [Object],
+        defaultRules: [Object],
+        shorthands: [Array],
+        noParse: [Function] },
+     store: Map { 'enforce' => 'pre', 'test' => /\.(vue|(j|t)sx?)$/ },
+     name: 'eslint',
+     names: [ 'eslint' ],
+     uses: { parent: [Circular], store: [Object] },
+     include: { parent: [Circular], store: Set {} },
+     exclude: [Circular],
+     oneOfs: { parent: [Circular], store: Map {} },
+     shorthands: 
+      [ 'enforce',
+        'issuer',
+        'parser',
+        'resource',
+        'resourceQuery',
+        'sideEffects',
+        'test',
+        'type' ],
+     enforce: [Function],
+     issuer: [Function],
+     parser: [Function],
+     resource: [Function],
+     resourceQuery: [Function],
+     sideEffects: [Function],
+     test: [Function],
+     type: [Function] },
+  store: 
+   Set {
+     /node_modules/,
+     '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/@vue/cli-service/lib' } }
+{ parent: 
+   Rule {
+     parent: 
+      { parent: [Object],
+        store: [Object],
+        rules: [Object],
+        defaultRules: [Object],
+        shorthands: [Array],
+        noParse: [Function] },
+     store: Map { 'enforce' => 'pre', 'test' => /\.(vue|(j|t)sx?)$/ },
+     name: 'eslint',
+     names: [ 'eslint' ],
+     uses: { parent: [Circular], store: [Object] },
+     include: { parent: [Circular], store: Set {} },
+     exclude: [Circular],
+     oneOfs: { parent: [Circular], store: Map {} },
+     shorthands: 
+      [ 'enforce',
+        'issuer',
+        'parser',
+        'resource',
+        'resourceQuery',
+        'sideEffects',
+        'test',
+        'type' ],
+     enforce: [Function],
+     issuer: [Function],
+     parser: [Function],
+     resource: [Function],
+     resourceQuery: [Function],
+     sideEffects: [Function],
+     test: [Function],
+     type: [Function] },
+  store: 
+   Set {
+     /node_modules/,
+     '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/@vue/cli-service/lib',
+     '/dist/' } } '之后的'
 {
   mode: 'development',
   context: '/Users/shilili1/Documents/learn/drag/vue-drop',
@@ -55,7 +130,7 @@
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/.cache/vue-loader',
-              cacheIdentifier: '5408a745'
+              cacheIdentifier: 'ff5f7d22'
             }
           },
           /* config.module.rule('vue').use('vue-loader') */
@@ -66,7 +141,7 @@
                 preserveWhitespace: false
               },
               cacheDirectory: '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/.cache/vue-loader',
-              cacheIdentifier: '5408a745'
+              cacheIdentifier: 'ff5f7d22'
             }
           }
         ]
@@ -1025,7 +1100,7 @@
       {
         test: /\.jsx?$/,
         exclude: [
-          function () { /* omitted long function */ }
+          () => ['./dist/', 'node_modules']
         ],
         use: [
           /* config.module.rule('js').use('cache-loader') */
@@ -1033,7 +1108,7 @@
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/.cache/babel-loader',
-              cacheIdentifier: '04b82be5'
+              cacheIdentifier: '5ef34421'
             }
           },
           /* config.module.rule('js').use('babel-loader') */
@@ -1048,7 +1123,8 @@
         test: /\.(vue|(j|t)sx?)$/,
         exclude: [
           /node_modules/,
-          '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/@vue/cli-service/lib'
+          '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/@vue/cli-service/lib',
+          '/dist/'
         ],
         use: [
           /* config.module.rule('eslint').use('eslint-loader') */
@@ -1061,7 +1137,7 @@
                 '.vue'
               ],
               cache: true,
-              cacheIdentifier: '3f840857',
+              cacheIdentifier: '70e676f5',
               emitWarning: true,
               emitError: false,
               eslintPath: '/Users/shilili1/Documents/learn/drag/vue-drop/node_modules/eslint/lib/api.js',
@@ -1107,12 +1183,13 @@
     new HtmlWebpackPlugin(
       {
         templateParameters: function () { /* omitted long function */ },
-        chunks: false,
+        chunks: [
+          'chunk-vendors',
+          'chunk-common',
+          'index'
+        ],
         template: 'public/index.html',
-        filename: 'index.html',
-        excludeChunks: [
-          './src/index.js'
-        ]
+        filename: 'index.html'
       }
     ),
     /* config.plugin('preload-index') */
@@ -1167,7 +1244,7 @@
   ],
   entry: {
     index: [
-      '/Users/shilili1/Documents/learn/drag/vue-drop/src/index.js'
+      '/Users/shilili1/Documents/learn/drag/vue-drop/examples/index.js'
     ]
   }
 }

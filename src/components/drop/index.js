@@ -6,8 +6,8 @@
  * @LastEditors: shilili1
  */
 
-import VueDrag from './vue-drag.vue';
+import VueDrop from './vue-drop.vue';
 
-VueDrag.install = Vue => Vue.component(VueDrag.name, VueDrag);
+VueDrop.install = Vue => Vue.component(VueDrop.name, VueDrop);
 
-export default VueDrag;
+export default VueDrop;

@@ -2,15 +2,15 @@
  * @Description: 所有插件入口
  * @Author: shilili1
  * @Date: 2018-11-14 16:42:21
- * @LastEditTime: 2018-11-19 17:38:05
+ * @LastEditTime: 2018-11-20 17:19:48
  * @LastEditors: Please set LastEditors
  */
-import VueDrag from './components/drag/index';
+import VueDrop from './components/drop/index';
 
-// console.log(VueDrag, 'v9999999');
+// console.log(VueDrop, 'v9999999');
 
 const components = [
-  VueDrag,
+  VueDrop,
 ];
 
 const install = function (Vue) {
@@ -27,5 +27,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  VueDrag,
+  VueDrop,
 };

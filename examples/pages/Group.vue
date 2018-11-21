@@ -32,7 +32,7 @@
        <h4 class="i-tit">name:</h4>
        <p class="i-des">如果有相同的名字，则他们之间就可以互相的拖拽</p>
        <div class="i-content">
-        <vue-drag
+        <vue-drop
           class="ic-item"
           :elId = "name.id"
           :groupName = "name.gName"
@@ -41,8 +41,8 @@
             <li>第一组，我的groupName叫做‘group1’</li>
             <li>第一组，我的groupName叫做‘group1</li>
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           class="ic-item"
           :elId = "name1.id"
           :groupName = "name1.gName"
@@ -51,8 +51,8 @@
             <li>第二组，我的groupName叫做‘group1’</li>
             <li>第二组，我的groupName叫做‘group1</li>
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           class="ic-item"
           :elId = "name2.id"
           :groupName = "name2.gName"
@@ -61,7 +61,7 @@
             <li>第二组，我的groupName叫做‘group1’</li>
             <li>第二组，我的groupName叫做‘group1</li>
           </ul>
-        </vue-drag>
+        </vue-drop>
        </div>
      </div>
      <div class="item">
@@ -69,7 +69,7 @@
        <p class="i-des">true|false|'clone'|function — ability to move from the list.
          clone — copy the item, rather than move.</p>
        <div class="i-content">
-        <vue-drag
+        <vue-drop
           class="ic-item"
           :elId = "pull.id"
           :groupName = "pull.gName"
@@ -79,8 +79,8 @@
             <li>pull 第一组2</li>
             <li>pull 第一组3</li>
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           class="ic-item"
           :elId = "pull1.id"
           :groupName = "pull1.gName"
@@ -88,7 +88,7 @@
           <ul id="pullId1">
             <li>pull 第二组</li>
           </ul>
-        </vue-drag>
+        </vue-drop>
        </div>
      </div>
    </section>

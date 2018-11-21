@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <section class="left">
-      <vue-drag
+      <vue-drop
         :elId = "leftItem1.id"
         :groupName = "leftItem1.gName"
         :groupPull = "leftItem1.gPull"
@@ -12,11 +12,11 @@
           <li>左边1</li>
           <li>左边2</li>
         </ul>
-      </vue-drag>
+      </vue-drop>
     </section>
     <section class="right">
       <section class="r-top">
-        <vue-drag
+        <vue-drop
           :elId = "rtTtem.id"
           :groupName = "rtTtem.gName"
           :groupPull = "rtTtem.gPull"
@@ -24,8 +24,8 @@
         >
           <ul id="rtTtem">
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           :elId = "rtTtem1.id"
           :groupName = "rtTtem1.gName"
           :groupPull = "rtTtem1.gPull"
@@ -36,10 +36,10 @@
             <li>上边 itme2<i class="js-remove">✖</i></li>
             <li>上边 itme3<i class="js-remove">✖</i></li>
           </ul>
-        </vue-drag>
+        </vue-drop>
       </section>
       <section class="r-bottom">
-         <vue-drag
+         <vue-drop
           :elId = "item1.id"
           :groupName = "item1.gName"
           :groupPull = "item1.gPull"
@@ -52,8 +52,8 @@
             <li>item 2<i class="js-remove">✖</i></li>
             <li>item 3<i class="js-remove">✖</i></li>
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           :elId = "item2.id"
           :groupName = "item2.gName"
           :groupPull = "item2.gPull"
@@ -62,15 +62,15 @@
           <ul id="item2">
             <li>item 1 +++<i class="js-remove">✖</i></li>
           </ul>
-        </vue-drag>
-        <vue-drag
+        </vue-drop>
+        <vue-drop
           :elId = "item3.id"
           :groupName = "item3.gName"
           :groupPull = "item3.gPull"
           :groupPut = "item3.gPut"
         >
           <ul id="item3"> </ul>
-        </vue-drag>
+        </vue-drop>
       </section>
     </section>
   </div>
