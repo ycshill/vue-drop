@@ -6,11 +6,26 @@
         :groupName = "leftItem1.gName"
         :groupPull = "leftItem1.gPull"
         :groupPut = "leftItem1.gPut"
-        :disabled = "leftItem1.disabled"
+        :onMove = "leftItem1.onMove"
+        :onEnd = "leftItem1.onEnd"
+        :ghostClass = 'leftItem1.ghostClass'
+        :chosenClass = 'leftItem1.chosenClass'
+        :dragClass = 'leftItem1.dragClass'
       >
         <ul id="lItem1">
-          <li>左边1</li>
-          <li>左边2</li>
+          <li>左边1, 信息组</li>
+          <li>左边2, 信息组</li>
+        </ul>
+      </vue-drop>
+      <vue-drop
+        :elId = "leftItem2.id"
+        :groupName = "leftItem2.gName"
+        :groupPull = "leftItem2.gPull"
+        :groupPut = "leftItem2.gPut"
+      >
+        <ul id="lItem2">
+          <li>左边1, 功能组</li>
+          <li>左边2, 功能组</li>
         </ul>
       </vue-drop>
     </section>
@@ -22,7 +37,10 @@
           :groupPull = "rtTtem.gPull"
           :groupPut = "rtTtem.gPut"
         >
-          <ul id="rtTtem">
+          <ul
+            id="rtTtem"
+            :class="rtTtem.bgColor"
+          >
           </ul>
         </vue-drop>
         <vue-drop
@@ -31,7 +49,7 @@
           :groupPull = "rtTtem1.gPull"
           :groupPut = "rtTtem1.gPut"
         >
-          <ul id="rtTtem1">
+          <ul id="rtTtem1" :class="rtTtem1.bgColor">
             <li>上边 itme1<i class="js-remove">✖</i></li>
             <li>上边 itme2<i class="js-remove">✖</i></li>
             <li>上边 itme3<i class="js-remove">✖</i></li>
@@ -46,11 +64,12 @@
           :groupPut = "item1.gPut"
           :filter = "item1.filter"
           :onFilter = "item1.onFilter"
+          :onChoose = "item1.onChoose"
         >
-          <ul id="item1">
-            <li class="drag">item 1<i class="js-remove">✖</i></li>
-            <li>item 2<i class="js-remove">✖</i></li>
-            <li>item 3<i class="js-remove">✖</i></li>
+          <ul id="item1"  :class="item1.bgColor">
+            <li class="drag">item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
           </ul>
         </vue-drop>
         <vue-drop
@@ -59,7 +78,7 @@
           :groupPull = "item2.gPull"
           :groupPut = "item2.gPut"
         >
-          <ul id="item2">
+          <ul id="item2"  :class="item2.bgColor">
             <li>item 1 +++<i class="js-remove">✖</i></li>
           </ul>
         </vue-drop>
@@ -69,7 +88,7 @@
           :groupPull = "item3.gPull"
           :groupPut = "item3.gPut"
         >
-          <ul id="item3"> </ul>
+          <ul id="item3"  :class="item3.bgColor"> </ul>
         </vue-drop>
       </section>
     </section>
@@ -85,6 +104,7 @@ export default {
         id: 'item1',
         gName: 'group1',
         gPull: true,
+        bgColor: 'light-gray',
         // draggable: '.drag',
         // 控制最多能够放几个
         gPut: to => to.el.children.length < 3,
@@ -92,40 +112,78 @@ export default {
         onFilter: (evt) => {
           evt.item.parentNode.removeChild(evt.item);
         },
+        onChoose: (evt) => {
+          const parent = evt.target;
+          const index = evt.oldIndex;
+          const removeEle = document.createElement('span');
+          removeEle.className = 'js-remove';
+          removeEle.innerText = '✖';
+          console.log(parent.childNodes[index].appendChild(removeEle));
+        },
       },
       item2: {
         id: 'item2',
         gName: 'group1',
         gPull: true,
+        bgColor: 'light-gray',
         gPut: to => to.el.children.length < 3,
       },
       item3: {
         id: 'item3',
         gName: 'group1',
+        bgColor: 'light-gray',
         gPull: true,
         gPut: to => to.el.children.length < 3,
       },
       leftItem1: {
         id: 'lItem1',
-        gName: 'group1',
+        gName: 'header',
         gPull: 'clone',
         gPut: false,
+        bgColor: 'light-gray',
+        onMove: (evt, originalEvent, gName) => {
+          // console.log(gName);
+          Object.keys(this.$data).forEach((key) => {
+            if (gName === this.$data[key].gName) {
+              this.$data[key].bgColor = 'light-blue';
+            }
+          });
+        },
+        onEnd: (evt) => {
+          Object.keys(this.$data).forEach((key) => {
+            this.$data[key].bgColor = 'light-gray';
+          });
+        },
+        ghostClass: 'red',
+        // chosenClass: 'blue',
+        // dragClass: 'yellow',
+      },
+      leftItem2: {
+        id: 'lItem2',
+        gName: 'header',
+        gPull: 'clone',
+        gPut: false,
+        bgColor: 'light-gray',
       },
       rtTtem: {
         id: 'rtTtem',
-        gName: 'groupRT',
+        gName: 'header',
         gPull: true,
+        bgColor: 'light-gray',
         gPut: to => to.el.children.length < 1,
       },
       rtTtem1: {
         id: 'rtTtem1',
-        gName: 'groupRT',
+        gName: 'header',
         gPull: true,
         gPut: true,
+        bgColor: 'light-gray',
       },
     };
   },
   components: {},
+  mounted() {
+  },
 };
 </script>
 
@@ -134,6 +192,12 @@ $light-gray: #efefef;
 $light-red: #ff86a8;
 $light-blue: #3ae1ff;
 
+.light-gray{
+  background: $light-gray;
+}
+.light-blue{
+  background: $light-blue;
+}
 #app{
   display: flex;
   .left{

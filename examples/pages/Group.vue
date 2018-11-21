@@ -58,8 +58,8 @@
           :groupName = "name2.gName"
         >
           <ul id="nameId2">
-            <li>第二组，我的groupName叫做‘group1’</li>
-            <li>第二组，我的groupName叫做‘group1</li>
+            <li>第三组，我的groupName叫做‘group2’</li>
+            <li>第三组，我的groupName叫做‘group2‘</li>
           </ul>
         </vue-drop>
        </div>

@@ -182,6 +182,7 @@ export default {
     },
   },
   mounted() {
+    // console.log(this.onStart, 'kiiia ');
     const el = document.getElementById(this.elId);
     this.sortable = Sortable.create(el, {
       group: {
@@ -298,13 +299,12 @@ export default {
       } : null,
       // Event when you move an item in the list or between lists
       onMove: this.onMove ? (evt, originalEvent) => {
-        this.onMove(evt, originalEvent);
+        this.onMove(evt, originalEvent, this.groupName);
       } : null,
       onClone: this.onClone ? (evt) => {
         this.onClone(evt);
       } : null,
     });
-    window.console.log(this.sortable);
   },
   destroyed() {
     this.sortable.destroy();

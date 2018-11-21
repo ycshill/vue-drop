@@ -7,9 +7,6 @@
        <router-link to="/group">
         <li><span class="item">group</span></li>
        </router-link>
-       <router-link to="/group">
-        <li><span class="item">group</span></li>
-       </router-link>
      </ul>
    </section>
  </div>
