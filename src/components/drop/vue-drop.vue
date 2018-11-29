@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div :class="this.bgColor ? this.bgColor : ''">
    <slot></slot>
  </div>
 </template>
@@ -13,6 +13,11 @@ export default {
     return {};
   },
   props: {
+    bgColor: {
+      type: String,
+      required: false,
+      default: '',
+    },
     elId: {
       type: String,
       required: true,
@@ -182,7 +187,6 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.onStart, 'kiiia ');
     const el = document.getElementById(this.elId);
     this.sortable = Sortable.create(el, {
       group: {
@@ -265,6 +269,8 @@ export default {
       setData: this.setData ? (dataTransfer, dragEl) => {
         this.setData(dataTransfer, dragEl);
       } : null,
+      dropBubble: true,
+      dragoverBubble: true,
       // Element is chosen
       onChoose: this.onChoose ? (evt) => {
         this.onChoose(evt);
@@ -275,7 +281,7 @@ export default {
       } : null,
       // Element dragging ended
       onEnd: this.onEnd ? (evt) => {
-        this.onEnd(evt);
+        this.onEnd(evt, this.groupName);
       } : null,
       // Element is dropped into the list from another list
       onAdd: this.onAdd ? (evt) => {
@@ -305,6 +311,8 @@ export default {
         this.onClone(evt);
       } : null,
     });
+    console.log(this.sortable, 'sortable');
+    console.log(this.sortable.toArray(), 'sortable--toArray');
   },
   destroyed() {
     this.sortable.destroy();
