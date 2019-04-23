@@ -34,61 +34,77 @@ export default {
     return {
     };
   },
+  watch: {
+    elId: {
+      handler(val) {
+        this.sortable.destroy();
+        this.createSort();
+      },
+      deep: true,
+    },
+  },
   mounted() {
-    const that = this;
-    const defOptions = {
-      onStart(evt) {
-        console.log('onStart');
-      },
-      onEnd(evt) {
-        const {
-          oldIndex,
-          item,
-          newIndex,
-          from,
-          to,
-        } = evt;
-        // 是否在同一个拖拽区域中
-        const isSamePanel = that.isSamePanel(from, to);
-        that.onDragEnd(oldIndex, newIndex, item, isSamePanel);
-      },
-      onMove(evt, originalEvent) {
-        // console.log(evt, originalEvent, 'onMove');
-        // const { from, to } = evt;
-
-        // console.log(from.isEqualNode(to), 'onMove');
-      },
-      onAdd(evt) {
-        console.log('onAdd');
-      },
-      onClone(evt) {
-        evt.clone = '232';
-        console.log('onClone');
-      },
-      onChange(evt) {
-        console.log('onChange');
-      },
-      onFilter(evt) {
-        console.log('onFilter');
-      },
-      onUpdate(evt) {
-        console.log('onUpdate');
-      },
-      onChoose(evt) {
-        console.log('onChoose');
-      },
-    };
-    // 创建一个 sortable
-    const el = document.querySelector(`#${this.elId}`);
-    if (el) {
-      this.sortable = Sortable.create(el, Object.assign({}, defOptions, this.options));
-    }
-    console.log(this.sortable);
+    this.createSort();
   },
   destroyed() {
+    window.console.log(12);
     this.sortable.destroy();
   },
   methods: {
+    createSort() {
+      const that = this;
+      const defOptions = {
+        onStart(evt) {
+          that.$emit('start', evt);
+          window.console.log('onStart', evt);
+        },
+        onEnd(evt) {
+          const {
+            oldIndex,
+            item,
+            newIndex,
+            from,
+            to,
+          } = evt;
+          // 是否在同一个拖拽区域中
+          const isSamePanel = that.isSamePanel(from, to);
+          that.onDragEnd(oldIndex, newIndex, item, isSamePanel);
+          window.console.log('end');
+        },
+        onMove(evt, originalEvent) {
+        // console.log(evt, originalEvent, 'onMove');
+        // const { from, to } = evt;
+
+        // window.console.log(from.isEqualNode(to), 'onMove');
+        },
+        onAdd(evt) {
+          window.console.log('onAdd');
+        },
+        onClone(evt) {
+          evt.clone = '232';
+          window.console.log('onClone');
+        },
+        onChange(evt) {
+          window.console.log('onChange');
+        },
+        onFilter(evt) {
+          window.console.log('onFilter');
+        },
+        onUpdate(evt) {
+          window.console.log('onUpdate');
+        },
+        onChoose(evt) {
+          that.$emit('choose', evt);
+          window.console.log('onChoose', evt.from.getAttribute('id'));
+        },
+      };
+      // 创建一个 sortable
+      const el = document.querySelector(`#${this.elId}`);
+      if (el) {
+        this.sortable = Sortable.create(el, Object.assign({}, defOptions, this.options));
+      }
+      window.console.log(this.sortable);
+    },
     // 判断拖拽的区域是否是同一个拖拽区域
     isSamePanel(from, to) {
       return from.isEqualNode(to);
