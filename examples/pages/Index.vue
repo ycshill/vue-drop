@@ -75,6 +75,7 @@ export default {
         elId: 'lId',
         options: {
           group: 'same',
+          dragClass: 'drag',
         },
       },
       rData: {
@@ -165,5 +166,8 @@ export default {
   height: 50px;
   background: #ff0;
   margin: 10px;
+}
+.drag-item{
+  background-color: red;
 }
 </style>

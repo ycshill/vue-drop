@@ -68,21 +68,38 @@ export default {
           } = evt;
           // 是否在同一个拖拽区域中
           const isSamePanel = that.isSamePanel(from, to);
-          that.onDragEnd(oldIndex, newIndex, item, isSamePanel);
+          that.onDragEnd(oldIndex, newIndex, item, isSamePanel, from, to);
           window.console.log('end');
         },
         onMove(evt, originalEvent) {
-        // console.log(evt, originalEvent, 'onMove');
-        // const { from, to } = evt;
+          const {
+            oldIndex,
+            newIndex,
+            dragged,
+            from,
+            to,
+            clone,
+          } = evt;
+          // 是否在同一个拖拽区域中
+          const isSamePanel = that.isSamePanel(from, to);
+          if (!isSamePanel) {
+            const obj = {
+              item: dragged,
+              from,
+              to,
+            };
+            that.$emit('move', obj);
+          }
+          // const { from, to } = evt;
 
-        // window.console.log(from.isEqualNode(to), 'onMove');
+          // window.console.log(from.isEqualNode(to), 'onMove');
         },
         onAdd(evt) {
           window.console.log('onAdd');
         },
         onClone(evt) {
           evt.clone = '232';
-          window.console.log('onClone');
+          window.console.log('onClone', evt);
         },
         onChange(evt) {
           window.console.log('onChange');
@@ -96,6 +113,13 @@ export default {
         onChoose(evt) {
           that.$emit('choose', evt);
           window.console.log('onChoose', evt.from.getAttribute('id'));
+        },
+        onUnchoose(evt) {
+          that.$emit('unChoose', evt);
+          window.console.log('onUnchoose');
+        },
+        onRemove(evt) {
+          window.console.log('onRemove', evt);
         },
       };
       // 创建一个 sortable
@@ -117,12 +141,14 @@ export default {
      * @param {Boolean} isSamePanel 被拖拽的元素是否在同一区域内移动
      * @return:
      */
-    onDragEnd(oldIndex, newIndex, item, isSamePanel) {
+    onDragEnd(oldIndex, newIndex, item, isSamePanel, from, to) {
       const obj = {
         oldIndex,
         newIndex,
         item,
         isSamePanel,
+        from,
+        to,
       };
 
       this.$emit('onDragEnd', obj);
