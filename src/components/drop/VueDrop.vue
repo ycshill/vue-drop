@@ -95,7 +95,7 @@ export default {
           // window.console.log(from.isEqualNode(to), 'onMove');
         },
         onAdd(evt) {
-          window.console.log('onAdd');
+          window.console.log('onAdd', evt);
         },
         onClone(evt) {
           evt.clone = '232';
@@ -127,7 +127,7 @@ export default {
       if (el) {
         this.sortable = Sortable.create(el, Object.assign({}, defOptions, this.options));
       }
-      window.console.log(this.sortable);
+      window.console.log(this.sortable.utils);
     },
     // 判断拖拽的区域是否是同一个拖拽区域
     isSamePanel(from, to) {
