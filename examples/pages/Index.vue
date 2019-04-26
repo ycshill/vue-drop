@@ -170,4 +170,7 @@ export default {
 .drag-item{
   background-color: red;
 }
+.right .item{
+  background: red;
+}
 </style>
