@@ -95,6 +95,7 @@ export default {
           // window.console.log(from.isEqualNode(to), 'onMove');
         },
         onAdd(evt) {
+          that.$emit('add', evt);
           window.console.log('onAdd', evt);
         },
         onClone(evt) {
@@ -105,9 +106,11 @@ export default {
           window.console.log('onChange');
         },
         onFilter(evt) {
+          that.$emit('filter', evt);
           window.console.log('onFilter');
         },
         onUpdate(evt) {
+          that.$emit('update', evt);
           window.console.log('onUpdate');
         },
         onChoose(evt) {
