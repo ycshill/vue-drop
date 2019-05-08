@@ -90,9 +90,6 @@ export default {
             };
             that.$emit('move', obj);
           }
-          // const { from, to } = evt;
-
-          // window.console.log(from.isEqualNode(to), 'onMove');
         },
         onAdd(evt) {
           that.$emit('add', evt);
