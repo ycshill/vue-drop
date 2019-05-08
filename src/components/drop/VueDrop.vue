@@ -30,10 +30,6 @@ export default {
       required: false,
     },
   },
-  data() {
-    return {
-    };
-  },
   watch: {
     elId: {
       handler(val) {
@@ -47,7 +43,6 @@ export default {
     this.createSort();
   },
   destroyed() {
-    window.console.log(12);
     this.sortable.destroy();
   },
   methods: {
