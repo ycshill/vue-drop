@@ -49,6 +49,7 @@ export default {
     createSort() {
       const that = this;
       const defOptions = {
+        animation: 150,
         onStart(evt) {
           that.$emit('start', evt);
           window.console.log('onStart', evt);
