@@ -1,21 +1,10 @@
-
-/*
- * @Description: 所有插件入口
- * @Author: shilili1
- * @Date: 2018-11-14 16:42:21
- * @LastEditTime: 2018-11-23 17:30:04
- * @LastEditors: Please set LastEditors
- */
 import VueDrop from './components/drop/index';
-
-// console.log(VueDrop, 'v9999999');
 
 const components = [
   VueDrop,
 ];
 
 const install = function (Vue) {
-  // console.log('打卡红————————-');
   components.map(component => {
     Vue.component(component.name, component);
   });
