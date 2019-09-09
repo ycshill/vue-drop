@@ -8,6 +8,7 @@ import '../src/styles/common.scss';
 import './styles/example.scss';
 
 Vue.config.productionTip = false;
+
 Vue.use(VueDrop);
 
 new Vue({

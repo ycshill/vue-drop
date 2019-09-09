@@ -18,6 +18,7 @@ module.exports = {
     'arrow-body-style': 0,
     'consistent-return': 0,
     'no-param-reassign': 0,
+    'linebreak-style': 0
   },
   parserOptions: {
     parser: 'babel-eslint',

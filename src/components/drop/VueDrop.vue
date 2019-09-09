@@ -40,15 +40,37 @@ export default {
     },
   },
   mounted() {
+<<<<<<< HEAD
+=======
+    this.CompatibleFirefox();
+>>>>>>> v2
     this.createSort();
   },
   destroyed() {
     this.sortable.destroy();
   },
   methods: {
+<<<<<<< HEAD
     createSort() {
       const that = this;
       const defOptions = {
+=======
+    /**
+     * @description: 解决火狐浏览器的兼容问题
+     * @param {type}
+     * @return:
+     */
+    CompatibleFirefox() {
+      document.body.ondrop = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+    },
+    createSort() {
+      const that = this;
+      const defOptions = {
+        animation: 150,
+>>>>>>> v2
         onStart(evt) {
           that.$emit('start', evt);
           window.console.log('onStart', evt);
