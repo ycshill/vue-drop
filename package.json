@@ -1,10 +1,6 @@
 {
   "name": "vue-drop",
-<<<<<<< HEAD
   "version": "0.2.0",
-=======
-  "version": "0.2.3",
->>>>>>> v2
   "private": false,
   "scripts": {
     "start": "vue-cli-service serve",
