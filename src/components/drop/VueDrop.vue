@@ -40,12 +40,24 @@ export default {
     },
   },
   mounted() {
+    this.CompatibleFirefox();
     this.createSort();
   },
   destroyed() {
     this.sortable.destroy();
   },
   methods: {
+    /**
+     * @description: 解决火狐浏览器的兼容问题
+     * @param {type}
+     * @return:
+     */
+    CompatibleFirefox() {
+      document.body.ondrop = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+    },
     createSort() {
       const that = this;
       const defOptions = {
