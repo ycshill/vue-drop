@@ -44,7 +44,9 @@ export default {
     this.createSort();
   },
   destroyed() {
-    this.sortable.destroy();
+    if (this.sortable) {
+      this.sortable.destroy();
+    }
   },
   methods: {
     /**
@@ -135,7 +137,6 @@ export default {
       if (el) {
         this.sortable = Sortable.create(el, Object.assign({}, defOptions, this.options));
       }
-      window.console.log(this.sortable.utils);
     },
     // 判断拖拽的区域是否是同一个拖拽区域
     isSamePanel(from, to) {
